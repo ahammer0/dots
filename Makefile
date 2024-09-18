@@ -6,6 +6,9 @@ help:
 	| sort \
 	| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+
+FROM_SOURCE :=qutebrowser nnn-nav
+
 qutebrowser: python3## Install and configure qutebrowser
 	sudo rm -rf /opt/qutebrowser
 	sudo git clone https://github.com/qutebrowser/qutebrowser.git /opt/qutebrowser
@@ -15,22 +18,32 @@ qutebrowser: python3## Install and configure qutebrowser
 	sudo chmod a+rx /usr/bin/qutebrowser
 	sudo ln -vsf ${PWD}/qutebrowser/config.py ${HOME}/.config/qutebrowser/config.py
 
+nnn-nav: ## Install nnn terminal browser
+	$(PKGINSTALL) pkg-config libncursesw5-dev libreadline-dev
+	sudo mkdir -p /tmp/nnn/
+	cd /tmp/nnn/;\
+	sudo wget https://github.com/jarun/nnn/archive/refs/tags/v5.0.tar.gz;\
+	sudo tar -xzf *.tar.gz;\
+	cd nnn-*;\
+	sudo cp -fv $(DOTS)/nnn/nnn.h ./src/nnn.h;\
+	sudo make strip install
+	sudo rm -rf /tmp/nnn
+
+BASE_PKG := python3 git wget
+
 python3:
 	$(PKGINSTALL) $@
+git:
+	$(PKGINSTALL) $@
+wget:
+	$(PKGINSTALL) $@
 
-allinstall : qutebrowser ## Install everything
+base: $(BASE_PKG) ## Install base packages
+installfromsource: $(FROM_SOURCE)
+
+allinstall: base qutebrowser## Install everything
 
 updatepackages: ## Update all packages
 	sudo apt update
 	sudo apt upgrade
-
-updatefromsource: qutebrowser ## Update softwares installed from source
-
-allupdate : updatepackages updatefromsource## Update everything
-
-test:
-	( cd /opt;
-	pwd)
-	pwd
-	echo $(DOTS)
-	pwd
+allupdate: updatepackages installfromsource## Update everything
