@@ -38,7 +38,7 @@ nnn-nav: ## Install nnn terminal browser
 ####################################################################################
 #      Base Packages
 ####################################################################################
-BASE_PKG := python3 git wget vim redshift-gtk yarnpkg i3 less
+BASE_PKG := python3 git wget vim redshift-gtk yarnpkg i3 less bashrc
 
 python3:
 	$(PKGINSTALL) $@
@@ -78,6 +78,13 @@ bashrc:
 	ln -vsf ${PWD}/bashrc/.bashrc ${HOME}/.bashrc
 
 ####################################################################################
+#      Node packages
+####################################################################################
+NODE_PKG := create-vite node nodemon prettier
+installnodepkg: yarnpkg
+	yarnnpkg global add $(NODE_PKG)
+
+####################################################################################
 #      Grouping commands
 ####################################################################################
 base: $(BASE_PKG) ## Install base packages
@@ -86,7 +93,7 @@ base: $(BASE_PKG) ## Install base packages
 installfromsource: $(FROM_SOURCE)
 
 .PHONY: allinstall
-allinstall: base qutebrowser## Install everything
+allinstall: base qutebrowser installnodepkg ## Install everything
 
 .PHONY: updatepackages
 updatepackages: ## Update all packages
