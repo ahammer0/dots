@@ -35,7 +35,7 @@ nnn-nav: ## Install nnn terminal browser
 ####################################################################################
 #      Base Packages
 ####################################################################################
-BASE_PKG := python3 git wget vim redshift-gtk
+BASE_PKG := python3 git wget vim redshift-gtk yarnpkg
 
 python3:
 	$(PKGINSTALL) $@
@@ -51,6 +51,8 @@ vim:
 redshift-gtk:
 	$(PKGINSTALL) $@
 	ln -vsf ${PWD}/redshift/redshift.conf ${HOME}/.config/redshift.conf
+yarnpkg:
+	$(PKGINSTALL) $@
 
 
 
