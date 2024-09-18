@@ -1,6 +1,7 @@
 PKGINSTALL := sudo apt-get install
 DOTS := ${PWD}
 
+.PHONY: help
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 	| sort \
@@ -12,6 +13,7 @@ help:
 ####################################################################################
 FROM_SOURCE :=qutebrowser nnn-nav
 
+.PHONY: qutebrowser
 qutebrowser: python3## Install and configure qutebrowser
 	sudo rm -rf /opt/qutebrowser
 	sudo git clone https://github.com/qutebrowser/qutebrowser.git /opt/qutebrowser
@@ -21,6 +23,7 @@ qutebrowser: python3## Install and configure qutebrowser
 	sudo chmod a+rx /usr/bin/qutebrowser
 	sudo ln -vsf ${PWD}/qutebrowser/config.py ${HOME}/.config/qutebrowser/config.py
 
+.PHONY: nnn-nav
 nnn-nav: ## Install nnn terminal browser
 	$(PKGINSTALL) pkg-config libncursesw5-dev libreadline-dev
 	sudo mkdir -p /tmp/nnn/
@@ -35,7 +38,7 @@ nnn-nav: ## Install nnn terminal browser
 ####################################################################################
 #      Base Packages
 ####################################################################################
-BASE_PKG := python3 git wget vim redshift-gtk yarnpkg
+BASE_PKG := python3 git wget vim redshift-gtk yarnpkg i3 less
 
 python3:
 	$(PKGINSTALL) $@
@@ -43,30 +46,52 @@ git:
 	$(PKGINSTALL) $@
 wget:
 	$(PKGINSTALL) $@
+
+.PHONY: vim
 vim:
 	$(PKGINSTALL) $@ $@-gtk3
 	for file in .vimrc .vimrc.bepo; do ln -vsf ${PWD}/vim/$$file ${HOME}/$$file; done
 	rm -rf ${HOME}/.vim/bundle/Vundle.vim
 	git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle/Vundle.vim
+
+.PHONY: redshift-gtk
 redshift-gtk:
 	$(PKGINSTALL) $@
 	ln -vsf ${PWD}/redshift/redshift.conf ${HOME}/.config/redshift.conf
+
+.PHONY: yarnpkg
 yarnpkg:
 	$(PKGINSTALL) $@
 
+.PHONY: i3
+i3:
+	$(PKGINSTALL) i3 
+	ln -vsf ${PWD}/i3/i3config ${HOME}/.i3/config
+	ln -vsf ${PWD}/i3/i3statusconfig ${HOME}/.config/i3status/config
 
+.PHONY: less
+less:
+	ln -vsf ${PWD}/less/.lesskey ${HOME}/.lesskey
 
+.PHONY: bashrc
+bashrc:
+	ln -vsf ${PWD}/bashrc/.bashrc ${HOME}/.bashrc
 
 ####################################################################################
 #      Grouping commands
 ####################################################################################
 base: $(BASE_PKG) ## Install base packages
 
+.PHONY: installfromsource
 installfromsource: $(FROM_SOURCE)
 
+.PHONY: allinstall
 allinstall: base qutebrowser## Install everything
 
+.PHONY: updatepackages
 updatepackages: ## Update all packages
 	sudo apt update
 	sudo apt upgrade
+
+.PHONY: allupdate
 allupdate: updatepackages installfromsource## Update everything
