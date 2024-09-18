@@ -29,7 +29,7 @@ nnn-nav: ## Install nnn terminal browser
 	sudo make strip install
 	sudo rm -rf /tmp/nnn
 
-BASE_PKG := python3 git wget
+BASE_PKG := python3 git wget vim
 
 python3:
 	$(PKGINSTALL) $@
@@ -37,6 +37,11 @@ git:
 	$(PKGINSTALL) $@
 wget:
 	$(PKGINSTALL) $@
+vim:
+	$(PKGINSTALL) $@ $@-gtk3
+	for file in .vimrc .vimrc.bepo; do ln -vsf ${PWD}/vim/$$file ${HOME}/$$file; done
+	rm -rf ${HOME}/.vim/bundle/Vundle.vim
+	git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle/Vundle.vim
 
 base: $(BASE_PKG) ## Install base packages
 installfromsource: $(FROM_SOURCE)
