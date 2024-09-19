@@ -130,7 +130,7 @@ c.hints.chars = 'aiuectsrn'
 
 # switch : and .
 # config.bind(':', 'repeat-command')
-# config.bind('.', 'set-cmd-text :')
+# config.bind('.', 'cmd-set-text :')
 
 # ---------------------------------------------------------------------------
 # FRENCH Settings
@@ -164,7 +164,7 @@ config.bind('éo', 'window-only')
 config.bind('e', 'open-editor')
 
 # Firefox like shortcuts for private window
-config.bind('<Ctrl-Shift-p>', 'set-cmd-text -s :open -p ')
+config.bind('<Ctrl-Shift-p>', 'cmd-set-text -s :open -p ')
 
 # nvim-bepoptimist shortcuts
 config.bind('éq', 'tab-close')
@@ -175,7 +175,7 @@ config.bind('<Return>', 'scroll-page 0 1')
 
 # like vim
 config.bind('u', 'undo')
-config.bind('!', 'set-cmd-text -s :spawn')
+config.bind('!', 'cmd-set-text -s :spawn')
 
 # ---------------------------------------------------------------------------
 # Tab and window setting
@@ -206,7 +206,7 @@ config.bind('gt', 'tab-next')
 config.bind('gT', 'tab-prev')
 
 # always open a new window, never use tabs
-config.bind('O', 'set-cmd-text -s :open -w ')
+config.bind('O', 'cmd-set-text -s :open -w ')
 
 # ---------------------------------------------------------------------------
 # Cycle options using ,
@@ -229,22 +229,22 @@ config.bind(',p', 'config-cycle -t -p content.private_browsing')
 # Bookmarks (b) / quickmarks (a)
 # ---------------------------------------------------------------------------
 
-config.bind('aa', ':set-cmd-text -s :quickmark-add {url}')
+config.bind('aa', ':cmd-set-text -s :quickmark-add {url}')
 config.bind('A', 'open qute://bookmarks#quickmarks')
 config.bind('aB', 'open -w qute://bookmarks#quickmarks')
 config.bind('ad', ':quickmark-del')
-config.bind('aD', 'set-cmd-text -s :quickmark-del')
-config.bind('al', 'set-cmd-text -s :quickmark-load')
-config.bind('aL', 'set-cmd-text -s :quickmark-load -w')
+config.bind('aD', 'cmd-set-text -s :quickmark-del')
+config.bind('al', 'cmd-set-text -s :quickmark-load')
+config.bind('aL', 'cmd-set-text -s :quickmark-load -w')
 
 config.unbind('b')
 config.bind('ba', 'bookmark-add')
 config.bind('B', 'open qute://bookmarks#bookmarks')
 config.bind('bB', 'open -w qute://bookmarks#bookmarks')
 config.bind('bd', 'bookmark-del')
-config.bind('bD', 'set-cmd-text -s :bookmark-del')
-config.bind('bl', 'set-cmd-text -s :bookmark-load')
-config.bind('bL', 'set-cmd-text -s :bookmark-load -w')
+config.bind('bD', 'cmd-set-text -s :bookmark-del')
+config.bind('bl', 'cmd-set-text -s :bookmark-load')
+config.bind('bL', 'cmd-set-text -s :bookmark-load -w')
 
 # ----------------------------------------------------------------------------
 # g* shotcuts: [g]o to…
@@ -261,7 +261,7 @@ config.bind('gh', 'history')
 config.bind('gH', 'history -w')
 
 # we use k for help as in vim (K) because h is taken
-config.bind('gk', 'set-cmd-text -s :help')
+config.bind('gk', 'cmd-set-text -s :help')
 config.bind('gK', 'open https://qutebrowser.org/doc/help/settings.html')
 
 # Printing…
@@ -291,11 +291,11 @@ config.bind('dd', 'download-open')
 config.bind('dh', 'download-retry')
 config.bind('dR', 'download-delete')
 config.bind('dr', 'download-remove')
-config.bind('ds', ':set-cmd-text :download ')
+config.bind('ds', ':cmd-set-text :download ')
 # downloads guitar tabs as pdf (ask for file name)
-config.bind('dt', ':set-cmd-text :print --pdf ' + download_path_tabs + '/')
+config.bind('dt', ':cmd-set-text :print --pdf ' + download_path_tabs + '/')
 # download as pdf
-config.bind('dp', ':set-cmd-text :print --pdf ' + download_path_pdf + '/')
+config.bind('dp', ':cmd-set-text :print --pdf ' + download_path_pdf + '/')
 
 # yv : youtube to video
 config.bind('dy', 'spawn ' + yt_download_cmd
