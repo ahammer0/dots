@@ -11,7 +11,7 @@ help:
 ####################################################################################
 #      Installed from source
 ####################################################################################
-FROM_SOURCE :=qutebrowser nnn-nav
+FROM_SOURCE :=qutebrowser nnn-nav discord
 
 .PHONY: qutebrowser
 qutebrowser: python3## Install and configure qutebrowser
@@ -35,16 +35,31 @@ nnn-nav: ## Install nnn terminal browser
 	sudo make strip install
 	sudo rm -rf /tmp/nnn
 
+.PHONY: discord
+discord: ## Install discord from source
+	mkdir /tmp/discord;\
+	cd /tmp/discord;\
+	wget -O discord.tar.gz "https://discord.com/api/download?platform=linux&format=tar.gz";\
+	sudo tar -xzf discord.tar.gz;\
+	sudo rm -rf /usr/share/discord/;\
+	sudo cp -r Discord/ /usr/share/discord/
+	sudo ln -vsf /usr/share/discord/Discord /usr/bin/discord
+	sudo ln -vsf /usr/share/discord/discord.desktop /usr/share/applications/discord.desktop
+	rm -rf /tmp/discord
+	
+
 ####################################################################################
 #      Base Packages
 ####################################################################################
-BASE_PKG := python3 git wget vim redshift-gtk yarnpkg i3 less bashrc
+BASE_PKG := python3 git wget network-manager vim redshift-gtk yarnpkg i3 less bashrc
 
 python3:
 	$(PKGINSTALL) $@
 git:
 	$(PKGINSTALL) $@
 wget:
+	$(PKGINSTALL) $@
+network-manager:
 	$(PKGINSTALL) $@
 
 .PHONY: vim
@@ -81,6 +96,7 @@ bashrc:
 #      Node packages
 ####################################################################################
 NODE_PKG := create-vite node nodemon prettier
+.PHONY: installnodepkg
 installnodepkg: yarnpkg
 	yarnnpkg global add $(NODE_PKG)
 
@@ -93,7 +109,7 @@ base: $(BASE_PKG) ## Install base packages
 installfromsource: $(FROM_SOURCE)
 
 .PHONY: allinstall
-allinstall: base qutebrowser installnodepkg ## Install everything
+allinstall: base installfromsource installnodepkg ## Install everything
 
 .PHONY: updatepackages
 updatepackages: ## Update all packages
