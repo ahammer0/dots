@@ -51,7 +51,7 @@ discord: ## Install discord from source
 ####################################################################################
 #      Base Packages
 ####################################################################################
-BASE_PKG := python3 git wget network-manager vim redshift-gtk yarnpkg i3 less bashrc
+BASE_PKG := python3 git wget network-manager vim redshift-gtk yarnpkg i3 less bashrc nvidia-drivers
 
 python3:
 	$(PKGINSTALL) $@
@@ -91,6 +91,10 @@ less:
 .PHONY: bashrc
 bashrc:
 	ln -vsf ${PWD}/bashrc/.bashrc ${HOME}/.bashrc
+
+.PHONY: nvidia-drivers
+nvidia-drivers: ## Install nvidia card drivers non-free
+	$(PKGINSTALL) nvidia-driver firmware-misc-nonfree
 
 ####################################################################################
 #      Node packages
