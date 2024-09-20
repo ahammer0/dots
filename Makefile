@@ -73,6 +73,7 @@ vim:
 redshift-gtk:
 	$(PKGINSTALL) $@
 	ln -vsf ${PWD}/redshift/redshift.conf ${HOME}/.config/redshift.conf
+	sudo echo "owner ${PWD}/redshift/redshift.conf r," | sudo tee -a /etc/apparmor.d/local/usr.bin.redshift
 
 .PHONY: yarnpkg
 yarnpkg:
