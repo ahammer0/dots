@@ -52,6 +52,7 @@ discord: ## Install discord from source
 #      Base Packages
 ####################################################################################
 BASE_PKG := python3 git wget network-manager vim redshift-gtk yarnpkg i3 less bashrc nvidia-drivers
+BASE_PKG += flameshot
 
 python3:
 	$(PKGINSTALL) $@
@@ -96,6 +97,10 @@ bashrc:
 .PHONY: nvidia-drivers
 nvidia-drivers: ## Install nvidia card drivers non-free
 	$(PKGINSTALL) nvidia-driver firmware-misc-nonfree
+
+.PHONY: flameshot
+flameshot: ## Install flameshot screenshot utility
+	$(PKGINSTALL) $@
 
 ####################################################################################
 #      Node packages
