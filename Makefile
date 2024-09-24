@@ -52,7 +52,7 @@ discord: ## Install discord from source
 #      Base Packages
 ####################################################################################
 BASE_PKG := python3 git wget network-manager vim redshift-gtk yarnpkg i3 less bashrc nvidia-drivers
-BASE_PKG += flameshot snapd X
+BASE_PKG += flameshot snapd X playerctl
 
 python3:
 	$(PKGINSTALL) $@
@@ -110,11 +110,16 @@ snapd: ## Install snap package manager
 X:
 	ln -vsf ${PWD}/Xressources/.Xressources ${HOME}/.Xressources
 
+.PHONY: playerctl
+playerctl:
+	$(PKGINSTALL) $@
+	
+
 
 ####################################################################################
 #      snap packages
 ####################################################################################
-SNAP_PKG := spotify
+SNAP_PKG := spotify logseq
 
 
 ####################################################################################
