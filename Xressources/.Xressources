@@ -1,0 +1,34 @@
+!!
+!! xterm
+!!
+
+XTerm*termName:        	   xterm-256color
+XTerm*utf8:		             1 
+XTerm*vt100.locale:        true
+XTerm*locale:		   true
+XTerm*selectToClipboard:   true
+XTerm*saveLines:	   2048
+XTerm*lineSpace:           0
+XTerm*letter_space:	   0
+xterm*faceName: 	   DejaVu Sans Mono:size=10:style=Regular:antialias=true
+xterm*borderWidth: 	   0
+
+!! Color Scheme
+!xterm*color0:              #073642
+!xterm*color1:              #dc322f
+!xterm*color2:              #859900
+!xterm*color3:              #b58900
+!xterm*color4:              #268bd2
+!xterm*color5:              #d33682
+!xterm*color6:              #2aa198
+!xterm*color7:              #eee8d5
+!xterm*color8:              #002b36
+!xterm*color9:              #cb4b16
+!xterm*color10:             #586e75
+!xterm*color11:             #657b83
+!xterm*color12:             #839496
+!xterm*color13:             #6c71c4
+!xterm*color14:             #93a1a1
+!xterm*color15:             #fdf6e3
+xterm*foreground:          #dcdccc
+xterm*background:          black

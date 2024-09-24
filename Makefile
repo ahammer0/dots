@@ -52,7 +52,7 @@ discord: ## Install discord from source
 #      Base Packages
 ####################################################################################
 BASE_PKG := python3 git wget network-manager vim redshift-gtk yarnpkg i3 less bashrc nvidia-drivers
-BASE_PKG += flameshot
+BASE_PKG += flameshot snapd X
 
 python3:
 	$(PKGINSTALL) $@
@@ -102,8 +102,23 @@ nvidia-drivers: ## Install nvidia card drivers non-free
 flameshot: ## Install flameshot screenshot utility
 	$(PKGINSTALL) $@
 
+.PHONY: snapd
+snapd: ## Install snap package manager
+	$(PKGINSTALL) $@
+
+.PHONY: X
+X:
+	ln -vsf ${PWD}/Xressources/.Xressources ${HOME}/.Xressources
+
+
 ####################################################################################
-#      Node packages
+#      snap packages
+####################################################################################
+SNAP_PKG := spotify
+
+
+####################################################################################
+#      node packages
 ####################################################################################
 NODE_PKG := create-vite node nodemon prettier
 .PHONY: installnodepkg
