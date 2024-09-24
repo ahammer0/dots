@@ -52,7 +52,7 @@ discord: ## Install discord from source
 #      Base Packages
 ####################################################################################
 BASE_PKG := python3 git wget network-manager vim redshift-gtk yarnpkg i3 less bashrc nvidia-drivers
-BASE_PKG += flameshot snapd X playerctl
+BASE_PKG += flameshot snapd X playerctl syncthing
 
 python3:
 	$(PKGINSTALL) $@
@@ -113,6 +113,11 @@ X:
 .PHONY: playerctl
 playerctl:
 	$(PKGINSTALL) $@
+
+.PHONY: syncthing
+syncthing:
+	$(PKGINSTALL) $@
+
 	
 
 
