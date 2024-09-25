@@ -123,7 +123,7 @@ alias l='ls --color=auto -al'
 alias mv='mv -i'
 alias rm='rm -i'
 alias cp='cp -i'
-alias tn='gnome-terminal ${PWD}'
+alias tn='i3-sensible-terminal'
 
 ### COLOR ###
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '

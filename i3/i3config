@@ -40,7 +40,7 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 ###############################
 
 # start a terminal
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec i3-sensible-terminal
 
 #start qutebrowser
 bindsym $mod+d exec qutebrowser 
