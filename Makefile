@@ -130,7 +130,7 @@ SNAP_PKG := spotify logseq
 ####################################################################################
 #      node packages
 ####################################################################################
-NODE_PKG := create-vite node nodemon prettier
+NODE_PKG := create-vite node nodemon prettier tget
 .PHONY: installnodepkg
 installnodepkg: yarnpkg
 	yarnnpkg global add $(NODE_PKG)
