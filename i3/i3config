@@ -45,6 +45,9 @@ bindsym $mod+Return exec xterm
 #start qutebrowser
 bindsym $mod+d exec qutebrowser 
 
+# Put qutebrowser windows as tabs
+for_window [class="qutebrowser"] focus child, layout tabbed, focus
+
 
 # kill focused window
 bindsym $mod+Shift+A kill
