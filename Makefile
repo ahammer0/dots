@@ -52,7 +52,7 @@ discord: ## Install discord from source
 #      Base Packages
 ####################################################################################
 BASE_PKG := python3 git wget network-manager vim redshift-gtk yarnpkg i3 less bashrc nvidia-drivers
-BASE_PKG += flameshot snapd X playerctl syncthing imv
+BASE_PKG += flameshot snapd X playerctl syncthing imv fzf
 
 python3:
 	$(PKGINSTALL) $@
@@ -125,6 +125,10 @@ imv:
 	xdg-mime default imv.desktop image/png
 	xdg-mime default imv.desktop image/jpg
 	xdg-mime default imv.desktop image/webp
+
+.PHONY: fzf
+fzf:
+	$(PKGINSTALL) $@
 
 
 ####################################################################################
