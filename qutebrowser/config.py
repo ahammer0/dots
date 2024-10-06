@@ -69,6 +69,7 @@ c.url.searchengines["m"] = "http://www.openstreetmap.org/search?query={}"
 c.url.searchengines["gm"] = "https://www.google.fr/maps/place/{}"
 c.url.searchengines["p"] = "http://php.net/manual-lookup.php?pattern={}&scope=quickref" # noqa
 c.url.searchengines["d"] = "https://developer.mozilla.org/fr/search?q={}"
+c.url.searchengines["sy"] = "https://symfony.com/doc/current/index.html?query={}"
 
 
 # ---------------------------------------------------------------------------
