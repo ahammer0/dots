@@ -34,6 +34,8 @@ nnn-nav: ## Install nnn terminal browser
 	sudo cp -fv $(DOTS)/nnn/nnn.h ./src/nnn.h;\
 	sudo make strip install
 	sudo rm -rf /tmp/nnn
+	echo "Installing NNN plugins"
+	sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
 
 .PHONY: discord
 discord: ## Install discord from source
