@@ -58,6 +58,7 @@ python3:
 	$(PKGINSTALL) $@
 git:
 	$(PKGINSTALL) $@
+	ln -vsf ${PWD}/git/dotgitconfig ${HOME}/.gitconfig
 wget:
 	$(PKGINSTALL) $@
 network-manager:

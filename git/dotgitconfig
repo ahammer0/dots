@@ -1,0 +1,16 @@
+[user]
+	email = axel.schwindenhammer@gmail.com
+	name = ahammer0
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[init]
+	defaultBranch = main
+[alias]
+	co = checkout
+	st = status
