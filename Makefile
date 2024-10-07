@@ -54,7 +54,7 @@ discord: ## Install discord from source
 #      Base Packages
 ####################################################################################
 BASE_PKG := python3 git wget network-manager vim redshift-gtk yarnpkg i3 less bashrc nvidia-drivers
-BASE_PKG += flameshot snapd X playerctl syncthing imv fzf
+BASE_PKG += flameshot snapd X playerctl syncthing imv fzf alacritty
 
 python3:
 	$(PKGINSTALL) $@
@@ -133,6 +133,11 @@ imv:
 fzf:
 	$(PKGINSTALL) $@
 
+.PHONY: alacritty
+alacritty:
+	$(PKGINSTALL) $@
+	mkdir -p ${HOME}/.config/alacritty/
+	ln -vsf ${PWD}/alacritty/alacritty.yml ${HOME}/.config/alacritty/alacritty.yml
 
 ####################################################################################
 #      snap packages
