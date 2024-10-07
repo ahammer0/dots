@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+colorscheme desert
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -25,6 +26,7 @@ Plugin 'preservim/vim-markdown'
 Plugin 'nelsyeung/twig.vim'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin on    " required
@@ -121,3 +123,4 @@ let g:vim_markdown_concealcursor="n"
 "nnoremap gr :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
 nnoremap gq :call fzf#run(fzf#wrap({'source': 'git ls-files' }))<CR>
 nnoremap gr :Buffers<CR>
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm():""
