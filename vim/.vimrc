@@ -99,7 +99,7 @@ source ~/.vimrc.bepo
 " write shortcut
 nnoremap nrst :w<CR>
 "auto Prettier
-autocmd BufWritePre *.js,*.jsx,*.tsx :Prettier
+"autocmd BufWritePre *.js,*.jsx,*.tsx :Prettier
 "
 "nerdtree open shortcut
 nnoremap gt :NERDTreeToggle<CR>
@@ -123,4 +123,4 @@ let g:vim_markdown_concealcursor="n"
 "nnoremap gr :call fzf#run({'source': 'git ls-files', 'sink': 'e'})<CR>
 nnoremap gq :call fzf#run(fzf#wrap({'source': 'git ls-files' }))<CR>
 nnoremap gr :Buffers<CR>
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm():""
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm():"<CR>"
