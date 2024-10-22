@@ -8,7 +8,9 @@
 [core]
 	editor = vim
 [merge]
-	tool = vimdiff
+	tool = vimdiff1
+[mergetool]
+  prompt = false
 [init]
 	defaultBranch = main
 [alias]
