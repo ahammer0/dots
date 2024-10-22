@@ -29,7 +29,7 @@ exec_always --no-startup-id "setxkbmap -model pc105 -layout fr -variant bepo"
 exec --no-startup-id  "gtk-redshift"
 
 #starting nm-applet network manager
-exec --no-startup-id nm-applet
+exec --no-startup-id nm-tray
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 
@@ -47,7 +47,8 @@ bindsym $mod+d exec qutebrowser
 
 # Put qutebrowser windows as tabs
 for_window [class="qutebrowser"] focus child, layout tabbed, focus
-
+# Puts discord to workspace 10
+assign [class="discord"] 10
 
 # kill focused window
 bindsym $mod+Shift+A kill
@@ -147,11 +148,17 @@ bindsym $mod+o mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        mode hide
 }
+
 #bind volume control keys
 bindsym XF86AudioRaiseVolume exec "amixer -c 0 -q set Master 2dB+"
 bindsym XF86AudioLowerVolume exec "amixer -c 0 -q set Master 2dB-"
 bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
+
+#bind brightness control keys
+bindsym XF86MonBrightnessUp exec "brightnessctl s +5%"
+bindsym XF86MonBrightnessDown exec "brightnessctl s 5%-"
 
 #bind media player keys
 #play et pause ne marchent psa encore
@@ -183,4 +190,4 @@ mode "$mode_system"{
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+Escape mode "$mode_system"

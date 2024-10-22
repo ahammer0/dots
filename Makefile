@@ -1,4 +1,4 @@
-PKGINSTALL := sudo apt-get install
+PKGINSTALL := sudo apt-get install -y
 DOTS := ${PWD}
 
 .PHONY: help
@@ -15,17 +15,20 @@ FROM_SOURCE :=qutebrowser nnn-nav discord
 
 .PHONY: qutebrowser
 qutebrowser: python3## Install and configure qutebrowser
+	$(PKGINSTALL) libqt5webengine5
 	sudo rm -rf /opt/qutebrowser
 	sudo git clone https://github.com/qutebrowser/qutebrowser.git /opt/qutebrowser
 	( cd /opt/qutebrowser;\
 	sudo python3 scripts/mkvenv.py)
 	sudo cp ${PWD}/qutebrowser/qutebrowserWrapper /usr/bin/qutebrowser
 	sudo chmod a+rx /usr/bin/qutebrowser
+	sudo mkdir -p ${HOME}/.config/qutebrowser/
+	sudo chown axel ${HOME}/.config/qutebrowser/
 	sudo ln -vsf ${PWD}/qutebrowser/config.py ${HOME}/.config/qutebrowser/config.py
 
 .PHONY: nnn-nav
 nnn-nav: ## Install nnn terminal browser
-	$(PKGINSTALL) pkg-config libncursesw5-dev libreadline-dev
+	$(PKGINSTALL) gcc pkg-config libncursesw5-dev libreadline-dev
 	sudo mkdir -p /tmp/nnn/
 	cd /tmp/nnn/;\
 	sudo wget https://github.com/jarun/nnn/archive/refs/tags/v5.0.tar.gz;\
@@ -35,7 +38,9 @@ nnn-nav: ## Install nnn terminal browser
 	sudo make strip install
 	sudo rm -rf /tmp/nnn
 	echo "Installing NNN plugins"
-	sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
+	curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs >> /tmp/nnnGetplugs.sh
+	sudo chmod +x /tmp/nnnGetplugs.sh
+	/tmp/nnnGetplugs.sh
 
 .PHONY: discord
 discord: ## Install discord from source
@@ -47,17 +52,25 @@ discord: ## Install discord from source
 	sudo cp -r Discord/ /usr/share/discord/
 	sudo ln -vsf /usr/share/discord/Discord /usr/bin/discord
 	sudo ln -vsf /usr/share/discord/discord.desktop /usr/share/applications/discord.desktop
-	rm -rf /tmp/discord
+	sudo rm -rf /tmp/discord
 	
 
 ####################################################################################
 #      Base Packages
 ####################################################################################
-BASE_PKG := python3 git wget network-manager vim redshift-gtk yarnpkg i3 less bashrc nvidia-drivers
-BASE_PKG += flameshot snapd X playerctl syncthing imv fzf alacritty
+BASE_PKG := python3 git wget network-manager vim redshift-gtk yarnpkg i3 less bashrc 
+BASE_PKG += flameshot snapd X playerctl syncthing basics imv fzf alacritty
 
+BASICS_PKG := git ca-certificates python3 python3-venv libgl1 libxkbcommon-x11-0 libegl1-mesa 
+BASICS_PKG += libfontconfig1 libglib2.0-0 libdbus-1-3 libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 
+BASICS_PKG += libxcb-shape0 libnss3 libxcomposite1 libxdamage1 libxrender1 libxrandr2 libxtst6 libxi6 
+BASICS_PKG += libasound2 pulseaudio alsa-utils nm-tray udisks2 alacritty
+basics:
+	$(PKGINSTALL) 
 python3:
 	$(PKGINSTALL) $@
+	$(PKGINSTALL) $@-venv
+.PHONY: git
 git:
 	$(PKGINSTALL) $@
 	ln -vsf ${PWD}/git/dotgitconfig ${HOME}/.gitconfig
@@ -85,8 +98,10 @@ yarnpkg:
 
 .PHONY: i3
 i3:
-	$(PKGINSTALL) i3 
-	ln -vsf ${PWD}/i3/i3config ${HOME}/.i3/config
+	$(PKGINSTALL) i3 j4-dmenu-desktop
+	mkdir -p ${HOME}/.i3/
+	ln -vsf ${PWD}/i3/i3config ${HOME}/.config/i3/config
+	mkdir -p ${HOME}/.config/i3status/
 	ln -vsf ${PWD}/i3/i3statusconfig ${HOME}/.config/i3status/config
 
 .PHONY: less
@@ -97,9 +112,6 @@ less:
 bashrc:
 	ln -vsf ${PWD}/bashrc/.bashrc ${HOME}/.bashrc
 
-.PHONY: nvidia-drivers
-nvidia-drivers: ## Install nvidia card drivers non-free
-	$(PKGINSTALL) nvidia-driver firmware-misc-nonfree
 
 .PHONY: flameshot
 flameshot: ## Install flameshot screenshot utility
@@ -151,12 +163,16 @@ SNAP_PKG := spotify logseq
 NODE_PKG := create-vite node nodemon prettier tget
 .PHONY: installnodepkg
 installnodepkg: yarnpkg
-	yarnnpkg global add $(NODE_PKG)
+	yarnpkg global add $(NODE_PKG)
 
 ####################################################################################
 #      Grouping commands
 ####################################################################################
 base: $(BASE_PKG) ## Install base packages
+
+installsnap: snapd ## Install snap packages
+	sudo snap install $(SNAP_PKG)
+	# sudo ln -vsf /snap/spotify/current/meta/gui/spotify
 
 .PHONY: installfromsource
 installfromsource: $(FROM_SOURCE)

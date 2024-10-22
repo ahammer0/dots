@@ -26,6 +26,7 @@ Plugin 'preservim/vim-markdown'
 Plugin 'nelsyeung/twig.vim'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
+Plugin 'mcchrish/nnn.vim'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
