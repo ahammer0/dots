@@ -25,3 +25,7 @@ font:
   normal:
     style: Sans
   size: 9
+key_bindings: 
+    - {key: Return,   mods: Control | Shift,                        action: SpawnNewInstance        }
+    # - {key: Space,    mods: Shift | Control,    mode: ~Search,      action: ToggleViMode            }
+    # - {key: Space,    mods: Shift | Control,    mode: Vi|~Search,   action: ScrollToBottom          }
