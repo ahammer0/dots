@@ -64,7 +64,8 @@ BASE_PKG += flameshot snapd X playerctl syncthing basics imv fzf alacritty
 BASICS_PKG := git ca-certificates python3 python3-venv libgl1 libxkbcommon-x11-0 libegl1-mesa 
 BASICS_PKG += libfontconfig1 libglib2.0-0 libdbus-1-3 libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 
 BASICS_PKG += libxcb-shape0 libnss3 libxcomposite1 libxdamage1 libxrender1 libxrandr2 libxtst6 libxi6 
-BASICS_PKG += libasound2 pulseaudio alsa-utils nm-tray udisks2 alacritty
+BASICS_PKG += libasound2 pulseaudio alsa-utils nm-tray udisks2 alacritty npm firefox-esr
+BASICS_PKG += libasound2-plugins-bluez pavucontrol
 basics:
 	$(PKGINSTALL) 
 python3:
