@@ -81,6 +81,9 @@ config.set('downloads.location.prompt', False)
 # config.set('downloads.remove_finished', 20000)
 config.set('hints.min_chars', 1)
 
+
+# set clipboard access 
+config.set('content.javascript.clipboard','access')
 # ---------------------------------------------------------------------------
 # BEPO bindings
 # ---------------------------------------------------------------------------
