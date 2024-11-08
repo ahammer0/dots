@@ -45,8 +45,6 @@ bindsym $mod+Return exec i3-sensible-terminal
 #start qutebrowser
 bindsym $mod+d exec qutebrowser 
 
-# Put qutebrowser windows as tabs
-for_window [class="qutebrowser"] focus child, layout tabbed, focus
 # Puts discord to workspace 10
 assign [class="discord"] 10
 
