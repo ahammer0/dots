@@ -125,3 +125,5 @@ let g:vim_markdown_concealcursor="n"
 nnoremap gq :call fzf#run(fzf#wrap({'source': 'git ls-files' }))<CR>
 nnoremap gr :Buffers<CR>
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm():"<CR>"
+
+au BufNewFile,BufRead *.ejs set filetype=html
