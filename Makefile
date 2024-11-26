@@ -66,7 +66,7 @@ BASICS_PKG := git ca-certificates python3 python3-venv libgl1 libxkbcommon-x11-0
 BASICS_PKG += libfontconfig1 libglib2.0-0 libdbus-1-3 libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 
 BASICS_PKG += libxcb-shape0 libnss3 libxcomposite1 libxdamage1 libxrender1 libxrandr2 libxtst6 libxi6 
 BASICS_PKG += libasound2 pulseaudio alsa-utils nm-tray udisks2 alacritty npm firefox-esr
-BASICS_PKG += libasound2-plugins-bluez pavucontrol
+BASICS_PKG += libasound2-plugins-bluez pavucontrol docker
 basics:
 	$(PKGINSTALL) 
 python3:
