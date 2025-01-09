@@ -23,7 +23,7 @@ floating_modifier $mod
 ###############################
 
 # setting bepo layout
-exec_always --no-startup-id "setxkbmap -model pc105 -layout fr -variant bepo"
+# exec_always --no-startup-id "setxkbmap -model pc105 -layout fr -variant bepo"
 
 #lancage de redshift
 exec --no-startup-id  "gtk-redshift"
@@ -43,33 +43,33 @@ exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agen
 bindsym $mod+Return exec i3-sensible-terminal
 
 #start qutebrowser
-bindsym $mod+d exec qutebrowser 
+bindsym $mod+i exec qutebrowser
 
 # Puts discord to workspace 10
 assign [class="discord"] 10
 
 # kill focused window
-bindsym $mod+Shift+A kill
+bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+Shift+i exec dmenu_run
+bindsym $mod+Shift+D exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+i exec --no-startup-id j4-dmenu-desktop
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 
 # change focus
-bindsym $mod+c focus left
-bindsym $mod+t focus down
-bindsym $mod+s focus up
-bindsym $mod+r focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 
 # move focused window
-bindsym $mod+Shift+c move left
-bindsym $mod+Shift+t move down
-bindsym $mod+Shift+s move up
-bindsym $mod+Shift+r move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
 bindsym $mod+Shift+V split h
@@ -78,12 +78,12 @@ bindsym $mod+Shift+V split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+e fullscreen
+bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+u layout stacking
-bindsym $mod+agrave layout tabbed
-bindsym $mod+p layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -98,48 +98,48 @@ bindsym $mod+a focus parent
 bindsym $mod+b focus child
 
 # switch to workspace
-bindsym $mod+quotedbl workspace 1
-bindsym $mod+guillemotleft workspace 2
-bindsym $mod+guillemotright workspace 3
-bindsym $mod+parenleft workspace 4
-bindsym $mod+parenright workspace 5
-bindsym $mod+at workspace 6
-bindsym $mod+plus workspace 7
-bindsym $mod+minus workspace 8
-bindsym $mod+slash workspace 9
-bindsym $mod+asterisk workspace 10
+bindsym $mod+"&" workspace 1
+bindsym $mod+"é" workspace 2
+bindsym $mod+"\"" workspace 3
+# bindsym $mod+' workspace 4
+# bindsym $mod+'(' workspace 5
+# bindsym $mod+'-' workspace 6
+# bindsym $mod+'è' workspace 7
+# bindsym $mod+'_' workspace 8
+# bindsym $mod+'ç' workspace 9
+bindsym $mod+'à' workspace 10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
+# bindsym $mod+Shift+3 move container to workspace 3
+# bindsym $mod+Shift+4 move container to workspace 4
+# bindsym $mod+Shift+5 move container to workspace 5
+# bindsym $mod+Shift+6 move container to workspace 6
+# bindsym $mod+Shift+7 move container to workspace 7
+# bindsym $mod+Shift+8 move container to workspace 8
+# bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+Y reload
+bindsym $mod+Shift+R reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+o restart
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        bindsym c resize shrink width 10 px or 10 ppt
-        bindsym t resize grow height 10 px or 10 ppt
-        bindsym s resize shrink height 10 px or 10 ppt
-        bindsym r resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
-bindsym $mod+o mode "resize"
+bindsym $mod+r mode "resize"
 
 
 # Start i3bar to display a wborkspace bar (plus the system information i3status
@@ -167,9 +167,9 @@ bindsym XF86AudioPrev exec playerctl previous
 
 
 #Scratchpad functions mapping
-bindsym $mod+Shift+K  move container to scratchpad
-bindsym $mod+k  scratchpad show
-bindsym $mod+j [class="Logseq"] scratchpad show; move position center
+# bindsym $mod+Shift+K  move container to scratchpad
+# bindsym $mod+k  scratchpad show
+# bindsym $mod+j [class="Logseq"] scratchpad show; move position center
 
 #Screenshot shortcut
 bindsym Print exec --no-startup-id "killall flameshot;flameshot gui -c" 
