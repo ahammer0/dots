@@ -29,6 +29,9 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'mcchrish/nnn.vim'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'pantharshit00/vim-prisma'
+Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'Exafunction/codeium.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin on    " required
@@ -128,5 +131,8 @@ nnoremap gr :Buffers<CR>
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm():"<CR>"
 
 au BufNewFile,BufRead *.ejs set filetype=html
+
+" set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 "utilisation de la souris
 set mouse=a

@@ -135,3 +135,7 @@ export NVM_DIR="$HOME/.nvm"
 
 ### Set keyboard repetition speed and delay
 xset r rate 200 40
+. "$HOME/.cargo/env"
+
+### Sev nvim environment variable
+export PATH="$PATH:/opt/nvim/"

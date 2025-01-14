@@ -9,3 +9,8 @@
 
 #vim coc
 -ajouter coc-css
+
+#installation de ghostwriter
+```sh
+sudo apt install ghostwriter
+```

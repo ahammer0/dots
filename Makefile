@@ -133,7 +133,7 @@ playerctl:
 
 .PHONY: syncthing
 syncthing:
-	$(PKGINSTALL) $@
+	$(PKGINSTALL) $@ syncthing-gtk
 
 .PHONY: imv
 imv:
