@@ -107,31 +107,45 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+b focus child
+bindsym $mod+q focus child
+
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
-bindsym $mod+"&" workspace 1
-bindsym $mod+"é" workspace 2
-bindsym $mod+"\"" workspace 3
-# bindsym $mod+' workspace 4
-# bindsym $mod+'(' workspace 5
-# bindsym $mod+'-' workspace 6
-# bindsym $mod+'è' workspace 7
-# bindsym $mod+'_' workspace 8
-# bindsym $mod+'ç' workspace 9
-bindsym $mod+'à' workspace 10
+bindsym $mod+ampersand workspace number $ws1
+bindsym $mod+eacute workspace number $ws2
+bindsym $mod+quotedbl workspace number $ws3
+bindsym $mod+apostrophe workspace number $ws4
+bindsym $mod+parenleft workspace number $ws5
+bindsym $mod+minus workspace number $ws6
+bindsym $mod+egrave workspace number $ws7
+bindsym $mod+underscore workspace number $ws8
+bindsym $mod+ccedilla workspace number $ws9
+bindsym $mod+agrave workspace number $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-# bindsym $mod+Shift+3 move container to workspace 3
-# bindsym $mod+Shift+4 move container to workspace 4
-# bindsym $mod+Shift+5 move container to workspace 5
-# bindsym $mod+Shift+6 move container to workspace 6
-# bindsym $mod+Shift+7 move container to workspace 7
-# bindsym $mod+Shift+8 move container to workspace 8
-# bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+ampersand move container to workspace number $ws1
+bindsym $mod+Shift+eacute move container to workspace number $ws2
+bindsym $mod+Shift+quotedbl move container to workspace number $ws3
+bindsym $mod+Shift+apostrophe move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+minus move container to workspace number $ws6
+bindsym $mod+Shift+egrave move container to workspace number $ws7
+bindsym $mod+Shift+underscore move container to workspace number $ws8
+bindsym $mod+Shift+ccedilla move container to workspace number $ws9
+bindsym $mod+Shift+agrave move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+R reload
@@ -179,9 +193,9 @@ bindsym XF86AudioPrev exec playerctl previous
 
 
 #Scratchpad functions mapping
-# bindsym $mod+Shift+K  move container to scratchpad
-# bindsym $mod+k  scratchpad show
-# bindsym $mod+j [class="Logseq"] scratchpad show; move position center
+bindsym $mod+Shift+B  move container to scratchpad
+bindsym $mod+b  scratchpad show
+bindsym $mod+p [class="Logseq"] scratchpad show; move position center
 
 #Screenshot shortcut
 bindsym Print exec --no-startup-id "killall flameshot;flameshot gui -c" 

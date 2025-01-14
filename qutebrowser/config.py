@@ -16,7 +16,7 @@ except:
 
 # for nouveau drivers
 if force_rendering:
-    c.qt.force_software_rendering = 'chromium'
+    c.qt.force_software_rendering = "chromium"
 
 # ----------------------------------------------------------------------------
 # System Configuration
@@ -24,18 +24,20 @@ if force_rendering:
 # ----------------------------------------------------------------------------
 
 # where to save …
-download_path = '~/Téléchargements'
-download_path_video = '~/videos/youtube'
-download_path_music = '~/videos/youtube/mp3'
-download_path_tabs = '~/music/tabs'
-download_path_pdf = '~/Téléchargements'
+download_path = "~/Téléchargements"
+download_path_video = "~/videos/youtube"
+download_path_music = "~/videos/youtube/mp3"
+download_path_tabs = "~/music/tabs"
+download_path_pdf = "~/Téléchargements"
 
 # commands to download youtube videos/extract mp3
-yt_download_cmd = "yt-dlp -o '" + download_path_video \
-        + "/%(title)s.%(ext)s'"
-yt_download_mp3_cmd = "yt-dlp --audio-format mp3 --audio-quality 7 \
-        --restrict-filenames --extract-audio -o '" \
-        + download_path_music + "/%(title)s.%(ext)s'"
+yt_download_cmd = "yt-dlp -o '" + download_path_video + "/%(title)s.%(ext)s'"
+yt_download_mp3_cmd = (
+    "yt-dlp --audio-format mp3 --audio-quality 7 \
+        --restrict-filenames --extract-audio -o '"
+    + download_path_music
+    + "/%(title)s.%(ext)s'"
+)
 
 # fonts are very small on hidpi
 c.zoom.default = 100
@@ -48,12 +50,12 @@ c.zoom.default = 100
 # ----------------------------------------------------------------------------
 
 # nothing is more annoying than a mouse, except autoplay
-c.qt.args.append('autoplay-policy=user-gesture-required')
+c.qt.args.append("autoplay-policy=user-gesture-required")
 
 # ---------------------------------------------------------------------------
 # Custom search engines
 # ---------------------------------------------------------------------------
-c.url.start_pages = 'about:blank'
+c.url.start_pages = "about:blank"
 # c.url.searchengines["DEFAULT"] = "https://www.google.fr/search?q={}"
 c.url.searchengines["DEFAULT"] = "https://lite.qwant.com/?l=fr&t=web&q={}"
 c.url.searchengines["g"] = "https://www.google.com/search?hl=en&q={}"
@@ -64,10 +66,12 @@ c.url.searchengines["a"] = "https://wiki.archlinux.org/?search={}"
 c.url.searchengines["w"] = "https://en.wikipedia.org/wiki/{}"
 c.url.searchengines["wa"] = "https://wiki.archlinux.org/index.php?search={}"
 # pylint: disable=line-too-long
-c.url.searchengines["s"] = "https://www.searx.me/?q={}&category_general=on&time_range=&language=en-us" # noqa
+c.url.searchengines["s"] = (
+    "https://www.searx.me/?q={}&category_general=on&time_range=&language=en-us"  # noqa
+)
 c.url.searchengines["m"] = "http://www.openstreetmap.org/search?query={}"
 c.url.searchengines["gm"] = "https://www.google.fr/maps/place/{}"
-c.url.searchengines["p"] = "http://php.net/manual-lookup.php?pattern={}&scope=quickref" # noqa
+c.url.searchengines["p"] = "http://php.net/manual-lookup.php?pattern={}&scope=quickref"  # noqa
 c.url.searchengines["d"] = "https://developer.mozilla.org/fr/search?q={}"
 c.url.searchengines["sy"] = "https://symfony.com/doc/current/index.html?query={}"
 
@@ -75,77 +79,77 @@ c.url.searchengines["sy"] = "https://symfony.com/doc/current/index.html?query={}
 # ---------------------------------------------------------------------------
 # Custom folders
 # ---------------------------------------------------------------------------
-config.set('downloads.location.directory', download_path)
-config.set('downloads.position', 'bottom')
-config.set('downloads.location.prompt', False)
+config.set("downloads.location.directory", download_path)
+config.set("downloads.position", "bottom")
+config.set("downloads.location.prompt", False)
 # config.set('downloads.remove_finished', 20000)
-config.set('hints.min_chars', 1)
+config.set("hints.min_chars", 1)
 
 
-# set clipboard access 
-config.set('content.javascript.clipboard','access')
+# set clipboard access
+config.set("content.javascript.clipboard", "access")
 # ---------------------------------------------------------------------------
 # BEPO bindings
 # ---------------------------------------------------------------------------
 
 # remap homerow for bépo
-config.unbind('j')
-config.unbind('k')
-config.unbind('l')
-config.unbind('n')
-
-config.bind('r', 'scroll up')
-config.bind('s', 'scroll down')
-config.bind('t', 'scroll left')
-config.bind('n', 'scroll right')
-
-config.bind('l', 'scroll right')
-config.bind('L', 'scroll right')
+# config.unbind('j')
+# config.unbind('k')
+# config.unbind('l')
+# config.unbind('n')
+#
+# config.bind('r', 'scroll up')
+# config.bind('s', 'scroll down')
+# config.bind('t', 'scroll left')
+# config.bind('n', 'scroll right')
+#
+# config.bind('l', 'scroll right')
+# config.bind('L', 'scroll right')
 
 # left hand control, nice when using mouse
-config.bind('«', 'back')
-config.bind('»', 'forward')
-config.bind('æ', 'back')
-config.bind('€', 'forward')
-
-config.bind('h', 'search-next')
-config.bind('H', 'search-prev')
-
-# we need to move the reload key
-config.bind('l', 'reload -f')
-# h alone is a little bit dangerous if escaping insert mode by mistake
-config.bind('L', 'reload')
-
-# CARET Mode -----------------------------------------------------------------
-config.bind('r', 'move-to-prev-line', 'caret')
-config.bind('s', 'move-to-next-line', 'caret')
-config.bind('t', 'move-to-prev-char', 'caret')
-config.bind('n', 'move-to-next-char', 'caret')
-
-config.bind('R', 'scroll up', 'caret')
-config.bind('S', 'scroll down', 'caret')
-config.bind('T', 'scroll left', 'caret')
-config.bind('N', 'scroll right', 'caret')
-
-# ----------------------------------------------------------------------------
-
-# hints for bepo
-c.hints.chars = 'aiuectsrn'
-
-# switch : and .
-# config.bind(':', 'repeat-command')
-# config.bind('.', 'cmd-set-text :')
-
-# ---------------------------------------------------------------------------
-# FRENCH Settings
-# ---------------------------------------------------------------------------
-
-# french next/prev links
-c.hints.prev_regexes.append(r'\bprécédent\b')
-c.hints.next_regexes.append(r'\bsuivant\b')
-config.bind('<', 'navigate prev')
-config.bind('>', 'navigate next')
-
+# config.bind('«', 'back')
+# config.bind('»', 'forward')
+# config.bind('æ', 'back')
+# config.bind('€', 'forward')
+#
+# config.bind('h', 'search-next')
+# config.bind('H', 'search-prev')
+#
+# # we need to move the reload key
+# config.bind('l', 'reload -f')
+# # h alone is a little bit dangerous if escaping insert mode by mistake
+# config.bind('L', 'reload')
+#
+# # CARET Mode -----------------------------------------------------------------
+# config.bind('r', 'move-to-prev-line', 'caret')
+# config.bind('s', 'move-to-next-line', 'caret')
+# config.bind('t', 'move-to-prev-char', 'caret')
+# config.bind('n', 'move-to-next-char', 'caret')
+#
+# config.bind('R', 'scroll up', 'caret')
+# config.bind('S', 'scroll down', 'caret')
+# config.bind('T', 'scroll left', 'caret')
+# config.bind('N', 'scroll right', 'caret')
+#
+# # ----------------------------------------------------------------------------
+#
+# # hints for bepo
+# c.hints.chars = 'aiuectsrn'
+#
+# # switch : and .
+# # config.bind(':', 'repeat-command')
+# # config.bind('.', 'cmd-set-text :')
+#
+# # ---------------------------------------------------------------------------
+# # FRENCH Settings
+# # ---------------------------------------------------------------------------
+#
+# # french next/prev links
+# c.hints.prev_regexes.append(r'\bprécédent\b')
+# c.hints.next_regexes.append(r'\bsuivant\b')
+config.bind("é", "navigate prev")
+config.bind('"', "navigate next")
+#
 # ---------------------------------------------------------------------------
 # Misc. bindings
 # ---------------------------------------------------------------------------
@@ -153,33 +157,33 @@ config.bind('>', 'navigate next')
 # fill password with user script and pass
 # the username must be set as the second line with user: prefix
 # it will use rofi, see ~/.config/qutebrowser/password_fill_rc file
-config.bind('éé', 'spawn --userscript password_fill')
+# config.bind('éé', 'spawn --userscript password_fill')
 
-config.bind('F', 'hint all window')
+# config.bind('F', 'hint all window')
 # d is a dangerous shortcut if you forget to go in insert mode…
 # i3 shortcut works or dd
 # Ctrl-q still closes all windows
-config.unbind('d')
-config.bind('<Ctrl-d>', 'tab-close')
-config.bind('éq', 'tab-close')
-config.bind('éo', 'window-only')
+# config.unbind('d')
+# config.bind('<Ctrl-d>', 'tab-close')
+# config.bind('éq', 'tab-close')
+# config.bind('éo', 'window-only')
 
 # edit with nvim (use ctrl-e in insert mode)
-config.bind('e', 'open-editor')
+config.bind("e", "open-editor")
 
 # Firefox like shortcuts for private window
-config.bind('<Ctrl-Shift-p>', 'cmd-set-text -s :open -p ')
+config.bind("<Ctrl-Shift-p>", "cmd-set-text -s :open -p ")
 
 # nvim-bepoptimist shortcuts
-config.bind('éq', 'tab-close')
-config.bind('èq', 'quit')
+# config.bind('éq', 'tab-close')
+# config.bind('èq', 'quit')
 
-config.bind('<Backspace>', 'scroll-page 0 -1')
-config.bind('<Return>', 'scroll-page 0 1')
+config.bind("<Backspace>", "scroll-page 0 -1")
+config.bind("<Return>", "scroll-page 0 1")
 
 # like vim
-config.bind('u', 'undo')
-config.bind('!', 'cmd-set-text -s :spawn')
+config.bind("u", "undo")
+config.bind("!", "cmd-set-text -s :spawn")
 
 # ---------------------------------------------------------------------------
 # Tab and window setting
@@ -187,30 +191,30 @@ config.bind('!', 'cmd-set-text -s :spawn')
 
 # just in case something opens a tab, but the conf is made
 # for no-tab use, letting i3 handle what it does better than qutebrowser
-c.tabs.show = 'multiple'
+c.tabs.show = "multiple"
 
 # do not use tabs, i3 handles it better
 c.tabs.tabs_are_windows = True
 c.tabs.background = False
 # allow use of 'dd' to close window
-c.tabs.last_close = 'close'
+c.tabs.last_close = "close"
 
 # unbind tab stuff…
-config.unbind('g$')
-config.unbind('g0')
+config.unbind("g$")
+config.unbind("g0")
 # config.unbind('gl')
 # config.unbind('gr')
-config.unbind('ga')
-config.unbind('g^')
-config.unbind('gC')
-config.unbind('gO')
+config.unbind("ga")
+config.unbind("g^")
+config.unbind("gC")
+config.unbind("gO")
 
 # but in case an annoying tab pops in, vim style navigation
-config.bind('gt', 'tab-next')
-config.bind('gT', 'tab-prev')
+# config.bind('gt', 'tab-next')
+# config.bind('gT', 'tab-prev')
 
 # always open a new window, never use tabs
-config.bind('O', 'cmd-set-text -s :open -w ')
+config.bind("O", "cmd-set-text -s :open -w ")
 
 # ---------------------------------------------------------------------------
 # Cycle options using ,
@@ -224,31 +228,31 @@ c.content.blocking.enabled = True
 # c.content.blocking.lists = \
 #         ['https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social/hosts'] # noqa
 
-config.bind(',h', 'config-cycle -t -p content.blocking.enabled')
+config.bind(",h", "config-cycle -t -p content.blocking.enabled")
 
 # toggle private mode for next openned window
-config.bind(',p', 'config-cycle -t -p content.private_browsing')
+config.bind(",p", "config-cycle -t -p content.private_browsing")
 
 # ---------------------------------------------------------------------------
 # Bookmarks (b) / quickmarks (a)
 # ---------------------------------------------------------------------------
 
-config.bind('aa', ':cmd-set-text -s :quickmark-add {url}')
-config.bind('A', 'open qute://bookmarks#quickmarks')
-config.bind('aB', 'open -w qute://bookmarks#quickmarks')
-config.bind('ad', ':quickmark-del')
-config.bind('aD', 'cmd-set-text -s :quickmark-del')
-config.bind('al', 'cmd-set-text -s :quickmark-load')
-config.bind('aL', 'cmd-set-text -s :quickmark-load -w')
+config.bind("aa", ":cmd-set-text -s :quickmark-add {url}")
+config.bind("A", "open qute://bookmarks#quickmarks")
+config.bind("aB", "open -w qute://bookmarks#quickmarks")
+config.bind("ad", ":quickmark-del")
+config.bind("aD", "cmd-set-text -s :quickmark-del")
+config.bind("al", "cmd-set-text -s :quickmark-load")
+config.bind("aL", "cmd-set-text -s :quickmark-load -w")
 
-config.unbind('b')
-config.bind('ba', 'bookmark-add')
-config.bind('B', 'open qute://bookmarks#bookmarks')
-config.bind('bB', 'open -w qute://bookmarks#bookmarks')
-config.bind('bd', 'bookmark-del')
-config.bind('bD', 'cmd-set-text -s :bookmark-del')
-config.bind('bl', 'cmd-set-text -s :bookmark-load')
-config.bind('bL', 'cmd-set-text -s :bookmark-load -w')
+config.unbind("b")
+config.bind("ba", "bookmark-add")
+config.bind("B", "open qute://bookmarks#bookmarks")
+config.bind("bB", "open -w qute://bookmarks#bookmarks")
+config.bind("bd", "bookmark-del")
+config.bind("bD", "cmd-set-text -s :bookmark-del")
+config.bind("bl", "cmd-set-text -s :bookmark-load")
+config.bind("bL", "cmd-set-text -s :bookmark-load -w")
 
 # ----------------------------------------------------------------------------
 # g* shotcuts: [g]o to…
@@ -256,60 +260,70 @@ config.bind('bL', 'cmd-set-text -s :bookmark-load -w')
 
 # Quick access to…
 # config.bind('gb',  'open qute://bookmarks')
-config.bind('gc', 'open qute://settings')
-config.bind('gC', 'open -w qute://settings')
-config.bind('ge', 'config-edit')
-config.bind('gs', 'config-source')
-config.bind('gi', 'inspector')
-config.bind('gh', 'history')
-config.bind('gH', 'history -w')
+config.bind("gc", "open qute://settings")
+config.bind("gC", "open -w qute://settings")
+config.bind("ge", "config-edit")
+config.bind("gs", "config-source")
+config.bind("gi", "inspector")
+config.bind("gh", "history")
+config.bind("gH", "history -w")
 
 # we use k for help as in vim (K) because h is taken
-config.bind('gk', 'cmd-set-text -s :help')
-config.bind('gK', 'open https://qutebrowser.org/doc/help/settings.html')
+config.bind("gk", "cmd-set-text -s :help")
+config.bind("gK", "open https://qutebrowser.org/doc/help/settings.html")
 
 # Printing…
-config.bind('gp', 'print --preview')
-config.bind('gP', 'print')
+config.bind("gp", "print --preview")
+config.bind("gP", "print")
 
 # open video in mpv
-config.bind('gm', 'spawn mpv {url}')
-config.bind('gM', 'hint links spawn mpv {hint-url}')
+config.bind("gm", "spawn mpv {url}")
+config.bind("gM", "hint links spawn mpv {hint-url}")
 
 # ----------------------------------------------------------------------------
 # y* additionnal shortcuts
 # ----------------------------------------------------------------------------
 
 # missing yank selection
-config.bind('yv', 'yank selection')
-config.bind('yV', 'yank -s selection')
+config.bind("yv", "yank selection")
+config.bind("yV", "yank -s selection")
 
 # ----------------------------------------------------------------------------
 # Download shortcuts (l*)
 # ----------------------------------------------------------------------------
 
 # Clear the download list quickly
-config.bind('dc', 'download-clear')
-config.bind('du', 'download-cancel')
-config.bind('dd', 'download-open')
-config.bind('dh', 'download-retry')
-config.bind('dR', 'download-delete')
-config.bind('dr', 'download-remove')
-config.bind('ds', ':cmd-set-text :download ')
+config.bind("dc", "download-clear")
+config.bind("du", "download-cancel")
+config.bind("dd", "download-open")
+config.bind("dh", "download-retry")
+config.bind("dR", "download-delete")
+config.bind("dr", "download-remove")
+config.bind("ds", ":cmd-set-text :download ")
 # downloads guitar tabs as pdf (ask for file name)
-config.bind('dt', ':cmd-set-text :print --pdf ' + download_path_tabs + '/')
+config.bind("dt", ":cmd-set-text :print --pdf " + download_path_tabs + "/")
 # download as pdf
-config.bind('dp', ':cmd-set-text :print --pdf ' + download_path_pdf + '/')
+config.bind("dp", ":cmd-set-text :print --pdf " + download_path_pdf + "/")
 
 # yv : youtube to video
-config.bind('dy', 'spawn ' + yt_download_cmd
-            + ' {url} ;; message-info "Downloading video to '
-            + download_path_video + '…"')
+config.bind(
+    "dy",
+    "spawn "
+    + yt_download_cmd
+    + ' {url} ;; message-info "Downloading video to '
+    + download_path_video
+    + '…"',
+)
 
 # ym : youtube to mp3
-config.bind('dY', 'spawn ' + yt_download_mp3_cmd
-            + ' {url} ;; message-info "Extracting audio to '
-            + download_path_music + '…"')
+config.bind(
+    "dY",
+    "spawn "
+    + yt_download_mp3_cmd
+    + ' {url} ;; message-info "Extracting audio to '
+    + download_path_music
+    + '…"',
+)
 
 # ----------------------------------------------------------------------------
 # Per domain settings
@@ -327,105 +341,105 @@ config.bind('dY', 'spawn ' + yt_download_mp3_cmd
 
 # fonts configuration
 # c.fonts.monospace = '12px Hack'
-c.fonts.prompts = '12px'
-c.fonts.messages.error = '12px Hack'
-c.fonts.messages.info = '12px'
-c.fonts.messages.warning = '12px'
-c.fonts.hints = '12px Hack'
-c.fonts.statusbar = '18px Hack'
-c.fonts.completion.entry = '18px Hack'
-c.fonts.completion.category = '18px'
-c.fonts.downloads = '12px'
-c.hints.border = '1px solid'
+c.fonts.prompts = "12px"
+c.fonts.messages.error = "12px Hack"
+c.fonts.messages.info = "12px"
+c.fonts.messages.warning = "12px"
+c.fonts.hints = "12px Hack"
+c.fonts.statusbar = "18px Hack"
+c.fonts.completion.entry = "18px Hack"
+c.fonts.completion.category = "18px"
+c.fonts.downloads = "12px"
+c.hints.border = "1px solid"
 
 # Solarized theme by YouNeverWalkAlone
 # https://www.reddit.com/r/qutebrowser/comments/77eqiq/solarized_or_base16_color_theme_for_qutebrowser/
 solarized = {
-    'base03': '#002b36',
-    'base02': '#073642',
-    'base01': '#586e75',
-    'base00': '#657b83',
-    'base0': '#839496',
-    'base1': '#93a1a1',
-    'base2': '#eee8d5',
-    'base3': '#fdf6e3',
-    'yellow': '#b58900',
-    'orange': '#cb4b16',
-    'red': '#dc322f',
-    'magenta': '#d33682',
-    'violet': '#6c71c4',
-    'blue': '#268bd2',
-    'cyan': '#2aa198',
-    'green': '#859900'
+    "base03": "#002b36",
+    "base02": "#073642",
+    "base01": "#586e75",
+    "base00": "#657b83",
+    "base0": "#839496",
+    "base1": "#93a1a1",
+    "base2": "#eee8d5",
+    "base3": "#fdf6e3",
+    "yellow": "#b58900",
+    "orange": "#cb4b16",
+    "red": "#dc322f",
+    "magenta": "#d33682",
+    "violet": "#6c71c4",
+    "blue": "#268bd2",
+    "cyan": "#2aa198",
+    "green": "#859900",
 }
 
 # Background color of the completion widget category headers.
 # Type: QssColor
-c.colors.completion.category.bg = solarized['base03']
+c.colors.completion.category.bg = solarized["base03"]
 
 # Bottom border color of the completion widget category headers.
 # Type: QssColor
-c.colors.completion.category.border.bottom = solarized['base03']
+c.colors.completion.category.border.bottom = solarized["base03"]
 
 # Top border color of the completion widget category headers.
 # Type: QssColor
-c.colors.completion.category.border.top = solarized['base03']
+c.colors.completion.category.border.top = solarized["base03"]
 
 # Foreground color of completion widget category headers.
 # Type: QtColor
-c.colors.completion.category.fg = solarized['base3']
+c.colors.completion.category.fg = solarized["base3"]
 
 # Background color of the completion widget for even rows.
 # Type: QssColor
-c.colors.completion.even.bg = solarized['base02']
+c.colors.completion.even.bg = solarized["base02"]
 
 # Text color of the completion widget.
 # Type: QtColor
-c.colors.completion.fg = solarized['base3']
+c.colors.completion.fg = solarized["base3"]
 
 # Background color of the selected completion item.
 # Type: QssColor
-c.colors.completion.item.selected.bg = solarized['violet']
+c.colors.completion.item.selected.bg = solarized["violet"]
 
 # Bottom border color of the selected completion item.
 # Type: QssColor
-c.colors.completion.item.selected.border.bottom = solarized['violet']
+c.colors.completion.item.selected.border.bottom = solarized["violet"]
 
 # Top border color of the completion widget category headers.
 # Type: QssColor
-c.colors.completion.item.selected.border.top = solarized['violet']
+c.colors.completion.item.selected.border.top = solarized["violet"]
 
 # Foreground color of the selected completion item.
 # Type: QtColor
-c.colors.completion.item.selected.fg = solarized['base3']
+c.colors.completion.item.selected.fg = solarized["base3"]
 
 # Foreground color of the matched text in the completion.
 # Type: QssColor
-c.colors.completion.match.fg = solarized['base2']
+c.colors.completion.match.fg = solarized["base2"]
 
 # Background color of the completion widget for odd rows.
 # Type: QssColor
-c.colors.completion.odd.bg = solarized['base02']
+c.colors.completion.odd.bg = solarized["base02"]
 
 # Color of the scrollbar in completion view
 # Type: QssColor
-c.colors.completion.scrollbar.bg = solarized['base0']
+c.colors.completion.scrollbar.bg = solarized["base0"]
 
 # Color of the scrollbar handle in completion view.
 # Type: QssColor
-c.colors.completion.scrollbar.fg = solarized['base2']
+c.colors.completion.scrollbar.fg = solarized["base2"]
 
 # Background color for the download bar.
 # Type: QssColor
-c.colors.downloads.bar.bg = solarized['base03']
+c.colors.downloads.bar.bg = solarized["base03"]
 
 # Background color for downloads with errors.
 # Type: QtColor
-c.colors.downloads.error.bg = solarized['red']
+c.colors.downloads.error.bg = solarized["red"]
 
 # Foreground color for downloads with errors.
 # Type: QtColor
-c.colors.downloads.error.fg = solarized['base3']
+c.colors.downloads.error.fg = solarized["base3"]
 
 # Color gradient start for download backgrounds.
 # Type: QtColor
@@ -433,7 +447,7 @@ c.colors.downloads.error.fg = solarized['base3']
 
 # Color gradient start for download text.
 # Type: QtColor
-c.colors.downloads.start.fg = solarized['base3']
+c.colors.downloads.start.fg = solarized["base3"]
 
 # Color gradient stop for download backgrounds.
 # Type: QtColor
@@ -464,15 +478,15 @@ c.colors.downloads.start.fg = solarized['base3']
 # Background color for hints. Note that you can use a `rgba(...)` value
 # for transparency.
 # Type: QssColor
-c.colors.hints.bg = solarized['violet']
+c.colors.hints.bg = solarized["violet"]
 
 # Font color for hints.
 # Type: QssColor
-c.colors.hints.fg = solarized['base3']
+c.colors.hints.fg = solarized["base3"]
 
 # Font color for the matched part of hints.
 # Type: QssColor
-c.colors.hints.match.fg = solarized['base2']
+c.colors.hints.match.fg = solarized["base2"]
 
 # Background color of the keyhint widget.
 # Type: QssColor
@@ -480,149 +494,149 @@ c.colors.hints.match.fg = solarized['base2']
 
 # Text color for the keyhint widget.
 # Type: QssColor
-c.colors.keyhint.fg = solarized['base3']
+c.colors.keyhint.fg = solarized["base3"]
 
 # Highlight color for keys to complete the current keychain.
 # Type: QssColor
-c.colors.keyhint.suffix.fg = solarized['yellow']
+c.colors.keyhint.suffix.fg = solarized["yellow"]
 
 # Background color of an error message.
 # Type: QssColor
-c.colors.messages.error.bg = solarized['red']
+c.colors.messages.error.bg = solarized["red"]
 
 # Border color of an error message.
 # Type: QssColor
-c.colors.messages.error.border = solarized['red']
+c.colors.messages.error.border = solarized["red"]
 
 # Foreground color of an error message.
 # Type: QssColor
-c.colors.messages.error.fg = solarized['base3']
+c.colors.messages.error.fg = solarized["base3"]
 
 # Background color of an info message.
 # Type: QssColor
-c.colors.messages.info.bg = solarized['base03']
+c.colors.messages.info.bg = solarized["base03"]
 
 # Border color of an info message.
 # Type: QssColor
-c.colors.messages.info.border = solarized['base03']
+c.colors.messages.info.border = solarized["base03"]
 
 # Foreground color an info message.
 # Type: QssColor
-c.colors.messages.info.fg = solarized['base3']
+c.colors.messages.info.fg = solarized["base3"]
 
 # Background color of a warning message.
 # Type: QssColor
-c.colors.messages.warning.bg = solarized['orange']
+c.colors.messages.warning.bg = solarized["orange"]
 
 # Border color of a warning message.
 # Type: QssColor
-c.colors.messages.warning.border = solarized['orange']
+c.colors.messages.warning.border = solarized["orange"]
 
 # Foreground color a warning message.
 # Type: QssColor
-c.colors.messages.warning.fg = solarized['base3']
+c.colors.messages.warning.fg = solarized["base3"]
 
 # Background color for prompts.
 # Type: QssColor
-c.colors.prompts.bg = solarized['base02']
+c.colors.prompts.bg = solarized["base02"]
 
 # Border used around UI elements in prompts.
 # Type: String
-c.colors.prompts.border = '1px solid ' + solarized['base3']
+c.colors.prompts.border = "1px solid " + solarized["base3"]
 
 # Foreground color for prompts.
 # Type: QssColor
-c.colors.prompts.fg = solarized['base3']
+c.colors.prompts.fg = solarized["base3"]
 
 # Background color for the selected item in filename prompts.
 # Type: QssColor
-c.colors.prompts.selected.bg = solarized['base01']
+c.colors.prompts.selected.bg = solarized["base01"]
 
 # Background color of the statusbar in caret mode.
 # Type: QssColor
-c.colors.statusbar.caret.bg = solarized['blue']
+c.colors.statusbar.caret.bg = solarized["blue"]
 
 # Foreground color of the statusbar in caret mode.
 # Type: QssColor
-c.colors.statusbar.caret.fg = solarized['base3']
+c.colors.statusbar.caret.fg = solarized["base3"]
 
 # Background color of the statusbar in caret mode with a selection.
 # Type: QssColor
-c.colors.statusbar.caret.selection.bg = solarized['violet']
+c.colors.statusbar.caret.selection.bg = solarized["violet"]
 
 # Foreground color of the statusbar in caret mode with a selection.
 # Type: QssColor
-c.colors.statusbar.caret.selection.fg = solarized['base3']
+c.colors.statusbar.caret.selection.fg = solarized["base3"]
 
 # Background color of the statusbar in command mode.
 # Type: QssColor
-c.colors.statusbar.command.bg = solarized['base03']
+c.colors.statusbar.command.bg = solarized["base03"]
 
 # Foreground color of the statusbar in command mode.
 # Type: QssColor
-c.colors.statusbar.command.fg = solarized['base3']
+c.colors.statusbar.command.fg = solarized["base3"]
 
 # Background color of the statusbar in private browsing + command mode.
 # Type: QssColor
-c.colors.statusbar.command.private.bg = solarized['base01']
+c.colors.statusbar.command.private.bg = solarized["base01"]
 
 # Foreground color of the statusbar in private browsing + command mode.
 # Type: QssColor
-c.colors.statusbar.command.private.fg = solarized['base3']
+c.colors.statusbar.command.private.fg = solarized["base3"]
 
 # Background color of the statusbar in insert mode.
 # Type: QssColor
-c.colors.statusbar.insert.bg = solarized['green']
+c.colors.statusbar.insert.bg = solarized["green"]
 
 # Foreground color of the statusbar in insert mode.
 # Type: QssColor
-c.colors.statusbar.insert.fg = solarized['base3']
+c.colors.statusbar.insert.fg = solarized["base3"]
 
 # Background color of the statusbar.
 # Type: QssColor
-c.colors.statusbar.normal.bg = solarized['base03']
+c.colors.statusbar.normal.bg = solarized["base03"]
 
 # Foreground color of the statusbar.
 # Type: QssColor
-c.colors.statusbar.normal.fg = solarized['base3']
+c.colors.statusbar.normal.fg = solarized["base3"]
 
 # Background color of the statusbar in private browsing mode.
 # Type: QssColor
-c.colors.statusbar.private.bg = solarized['base01']
+c.colors.statusbar.private.bg = solarized["base01"]
 
 # Foreground color of the statusbar in private browsing mode.
 # Type: QssColor
-c.colors.statusbar.private.fg = solarized['base3']
+c.colors.statusbar.private.fg = solarized["base3"]
 
 # Background color of the progress bar.
 # Type: QssColor
-c.colors.statusbar.progress.bg = solarized['base3']
+c.colors.statusbar.progress.bg = solarized["base3"]
 
 # Foreground color of the URL in the statusbar on error.
 # Type: QssColor
-c.colors.statusbar.url.error.fg = solarized['red']
+c.colors.statusbar.url.error.fg = solarized["red"]
 
 # Default foreground color of the URL in the statusbar.
 # Type: QssColor
-c.colors.statusbar.url.fg = solarized['base3']
+c.colors.statusbar.url.fg = solarized["base3"]
 
 # Foreground color of the URL in the statusbar for hovered links.
 # Type: QssColor
-c.colors.statusbar.url.hover.fg = solarized['base2']
+c.colors.statusbar.url.hover.fg = solarized["base2"]
 
 # Foreground color of the URL in the statusbar on successful load
 # (http).
 # Type: QssColor
-c.colors.statusbar.url.success.http.fg = solarized['base3']
+c.colors.statusbar.url.success.http.fg = solarized["base3"]
 
 # Foreground color of the URL in the statusbar on successful load
 # (https).
 # Type: QssColor
-c.colors.statusbar.url.success.https.fg = solarized['base3']
+c.colors.statusbar.url.success.https.fg = solarized["base3"]
 
 # Foreground color of the URL in the statusbar when there's a warning.
 # Type: QssColor
-c.colors.statusbar.url.warn.fg = solarized['yellow']
+c.colors.statusbar.url.warn.fg = solarized["yellow"]
 
 # Background color of the tab bar.
 # Type: QtColor
@@ -630,23 +644,23 @@ c.colors.statusbar.url.warn.fg = solarized['yellow']
 
 # Background color of unselected even tabs.
 # Type: QtColor
-c.colors.tabs.even.bg = solarized['base01']
+c.colors.tabs.even.bg = solarized["base01"]
 
 # Foreground color of unselected even tabs.
 # Type: QtColor
-c.colors.tabs.even.fg = solarized['base2']
+c.colors.tabs.even.fg = solarized["base2"]
 
 # Color for the tab indicator on errors.
 # Type: QtColor
-c.colors.tabs.indicator.error = solarized['red']
+c.colors.tabs.indicator.error = solarized["red"]
 
 # Color gradient start for the tab indicator.
 # Type: QtColor
-c.colors.tabs.indicator.start = solarized['violet']
+c.colors.tabs.indicator.start = solarized["violet"]
 
 # Color gradient end for the tab indicator.
 # Type: QtColor
-c.colors.tabs.indicator.stop = solarized['orange']
+c.colors.tabs.indicator.stop = solarized["orange"]
 
 # Color gradient interpolation system for the tab indicator.
 # Type: ColorSystem
@@ -659,33 +673,33 @@ c.colors.tabs.indicator.stop = solarized['orange']
 
 # Background color of unselected odd tabs.
 # Type: QtColor
-c.colors.tabs.odd.bg = solarized['base01']
+c.colors.tabs.odd.bg = solarized["base01"]
 
 # Foreground color of unselected odd tabs.
 # Type: QtColor
-c.colors.tabs.odd.fg = solarized['base2']
+c.colors.tabs.odd.fg = solarized["base2"]
 
 # Background color of selected even tabs.
 # Type: QtColor
-c.colors.tabs.selected.even.bg = solarized['base03']
+c.colors.tabs.selected.even.bg = solarized["base03"]
 
 # Foreground color of selected even tabs.
 # Type: QtColor
-c.colors.tabs.selected.even.fg = solarized['base3']
+c.colors.tabs.selected.even.fg = solarized["base3"]
 
 # Background color of selected odd tabs.
 # Type: QtColor
-c.colors.tabs.selected.odd.bg = solarized['base03']
+c.colors.tabs.selected.odd.bg = solarized["base03"]
 
 # Foreground color of selected odd tabs.
 # Type: QtColor
-c.colors.tabs.selected.odd.fg = solarized['base3']
+c.colors.tabs.selected.odd.fg = solarized["base3"]
 
 # Background color for webpages if unset (or empty to use the theme's
 # color)
 # Type: QtColor
 # c.colors.webpage.bg = 'white'
 
-#set external editor
+# set external editor
 # editor.command = "vim {file}"
-#error: editor undifined
+# error: editor undifined
