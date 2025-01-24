@@ -34,8 +34,7 @@ nnn-nav: ## Install nnn terminal browser
 	sudo wget https://github.com/jarun/nnn/archive/refs/tags/v5.0.tar.gz;\
 	sudo tar -xzf *.tar.gz;\
 	cd nnn-*;\
-	sudo cp -fv $(DOTS)/nnn/nnn.h ./src/nnn.h;\
-	sudo make strip install
+	sudo make strip install-desktop
 	sudo rm -rf /tmp/nnn
 	echo "Installing NNN plugins"
 	curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs >> /tmp/nnnGetplugs.sh
