@@ -213,7 +213,7 @@ bindsym $mod+b  scratchpad show
 bindsym $mod+p [class="Logseq"] scratchpad show; move position center
 
 #Screenshot shortcut
-bindsym Print exec --no-startup-id "killall flameshot;flameshot gui -c" 
+bindsym Print exec --no-startup-id "killall flameshot;flameshot gui" 
 
 #  Mode Lock /exit
 set $Locker i3lock -bf && sleep 1
