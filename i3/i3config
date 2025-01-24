@@ -53,6 +53,21 @@ bindsym $mod+Return exec i3-sensible-terminal
 #start qutebrowser
 bindsym $mod+i exec qutebrowser
 
+#toggle bepo/azerty
+set $changemode change keyboard layout 1:bepo 2:azerty
+mode "$changemode" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        bindsym shift+1 mode "default"; exec setxkbmap fr bepo
+        bindsym shift+2 mode "default"; exec setxkbmap fr
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+mod1+space mode "$changemode"
+
 # Puts discord to workspace 10
 assign [class="discord"] 10
 # Puts logseq in scratchpad
