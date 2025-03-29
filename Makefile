@@ -164,6 +164,11 @@ SNAP_PKG := spotify logseq postman
 .PHONY: mimeapps
 mimeapps:
 	ln -vsf ${PWD}/mimeConfig/mimeapps.list ${HOME}/.config/mimeapps.list
+.PHONY: display-hotplug
+display-hotplug:
+	sudo cp ${PWD}/display-hotplug/hotplug-udev.rules /etc/udev/rules.d/99-display-hotplug.rules
+	sudo chmod +x ${PWD}/display-hotplug/monitor-hotplug-handler.sh
+	sudo cp ${PWD}/display-hotplug/monitor-hotplug-handler.sh /usr/local/bin/monitor-hotplug-handler.sh
 ####################################################################################
 #      node packages
 ####################################################################################
