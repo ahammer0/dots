@@ -29,6 +29,9 @@ floating_modifier $mod
 #lancage de redshift
 exec --no-startup-id  "gtk-redshift"
 
+#unclutter to hide cursor
+exec --no-startup-id unclutter -idle 0.5 -root
+
 #starting nm-applet network manager
 exec --no-startup-id nm-tray
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
@@ -230,3 +233,6 @@ mode "$mode_system"{
   bindsym Escape mode "default"
 }
 bindsym $mod+Escape mode "$mode_system"
+
+# handle multiscreen
+bindsym $mod+m move workspace to output left
