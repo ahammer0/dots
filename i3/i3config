@@ -30,7 +30,7 @@ floating_modifier $mod
 exec --no-startup-id  "gtk-redshift"
 
 #unclutter to hide cursor
-exec --no-startup-id unclutter -idle 0.5 -root
+#exec --no-startup-id unclutter -idle 0.5 -root
 
 #starting nm-applet network manager
 exec --no-startup-id nm-tray
@@ -208,6 +208,9 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# bind displayxf key to auto config hdmi-1 
+bindsym XF86Display exec --no-startup-id "xrandr --output HDMI-1 --auto --left-of eDP-1 --rotate left"
 
 
 #Scratchpad functions mapping
