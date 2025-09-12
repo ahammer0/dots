@@ -59,7 +59,7 @@ discord: ## Install discord from source
 ####################################################################################
 BASE_PKG := python3 git wget network-manager vim redshift-gtk yarnpkg i3 less bashrc 
 BASE_PKG += flameshot snapd X playerctl syncthing basics imv fzf alacritty
-BASE_PKG += httpie ripgre default-jdk maven lua5.3
+BASE_PKG += httpie ripgre default-jdk maven lua5.3 cups
 
 BASICS_PKG := git ca-certificates python3 python3-venv libgl1 libxkbcommon-x11-0 libegl1-mesa 
 BASICS_PKG += libfontconfig1 libglib2.0-0 libdbus-1-3 libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 
