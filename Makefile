@@ -152,6 +152,15 @@ alacritty:
 	mkdir -p ${HOME}/.config/alacritty/
 	ln -vsf ${PWD}/alacritty/alacritty.yml ${HOME}/.config/alacritty/alacritty.yml
 
+.PHONY: neovim
+neovim:
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz && \
+	sudo rm -rf /opt/nvim-linux-x86_64 &&\
+	sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+	@LINE='export PATH="$$PATH:/opt/nvim-linux-x86_64/bin"' &&\
+	if ! grep -Fxq "$$LINE" $$HOME/.bashrc; then \
+		echo "$$LINE" >> $$HOME/.bashrc; fi
+
 ####################################################################################
 #      snap packages
 ####################################################################################
